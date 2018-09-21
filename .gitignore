@@ -7,3 +7,6 @@ generated-docs/
 .psc*
 .purs*
 .psa*
+src/Main.purs
+.DS_Store
+dist/

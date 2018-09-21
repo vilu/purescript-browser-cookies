@@ -4,7 +4,7 @@
         "build": "pulp build --to dist/browser-cookies.js",
         "watch": "pulp -w build --to dist/browser-cookies.js",
         "test": "pulp test",
-        "test-watch": "pulp -w test",
+        "watch-test": "pulp -w test",
         "repl": "pulp repl"
     },
     "devDependencies": {

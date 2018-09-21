@@ -2,8 +2,12 @@ module Test.Main where
 
 import Prelude
 import Effect (Effect)
-import Effect.Console (log)
+import Test.Unit (suite)
+import Test.Unit.Main (runTest)
+import Browser.Cookies.DataSpec as DataSpec
 
 main :: Effect Unit
-main = do
-  log "You should add some tests."
+main = runTest do
+  suite "Cookies" do
+    DataSpec.encodingTests
+    

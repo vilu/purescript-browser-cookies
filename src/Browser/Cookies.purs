@@ -1,39 +1,41 @@
-module Browser.Cookie (getCookies, getCookie, setCookie, setCookie2) where
+-- | This module provides the API for getting, setting and removing cookies
+module Browser.Cookie (getCookies, getCookie, setCookie, removeCookie) where
 
-
-import Data.Maybe
-import Data.String.Common
-import Data.String.Pattern
-import Debug.Trace
-import Effect
 import Prelude
-
-import Browser.Cookies.Data (Cookie(..), SetCookie(..), CookieOpts(..))
-import Data.Foldable (findMap)
-import Data.Functor (map, (<$>))
-import Data.JSDate (JSDate)
-import Browser.Cookies.Data (encode)
+import Effect (Effect)
+import Data.Maybe (Maybe(..))
+import Browser.Cookies.Data (Cookie(..), SetCookie(..), CookieOpts(..), encode)
+import Data.JSDate (fromTime)
+import Browser.Cookies.Internal (bakeCookies, findCookie)
 
 foreign import _getCookies :: Effect String
 
 foreign import _setCookie :: String -> Effect Unit
 
-getCookies :: Effect (Array String)
-getCookies = do
-  cs <- _getCookies
-  pure $ trim <$> split (Pattern ";") cs
+-- | Get all cookies
+getCookies :: Effect (Array Cookie)
+getCookies = bakeCookies <$> _getCookies
 
+-- | Get cookie by key
 getCookie :: String -> Effect (Maybe Cookie)
-getCookie key = findCookie <$> getCookies
-  where 
-    findCookie = findMap (matchCookie key) <<< toKeyVal
-    toKeyVal = map (split (Pattern "="))
-    matchCookie key' [k,v]| key' == k = Just $ Cookie { key, value:v }
-    matchCookie k kv = Nothing
+getCookie k = findCookie k <$> getCookies
 
+-- | Set cookie
 setCookie :: SetCookie -> Effect Unit
 setCookie sc = _setCookie $ encode sc
 
+-- | Remove cookie
+removeCookie :: String -> Effect Unit
+removeCookie key = _setCookie $ encode $ SetCookie { cookie, opts: opts $ fromTime 0.0 }
+    where
+      cookie = Cookie { key, value: "delete" }
 
-setCookie2 :: String -> Effect Unit
-setCookie2 = _setCookie
+      opts d = Just $ CookieOpts {
+          maxAge: Nothing
+        , expires: Just $ d
+        , secure: false
+        , httpOnly: false
+        , samesite: Nothing
+        , domain: Nothing
+        , path: Nothing
+      }
