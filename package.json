@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "scripts": {
+        "build": "pulp build --to dist/browser-cookies.js",
+        "watch": "pulp -w build --to dist/browser-cookies.js",
+        "test": "pulp test",
+        "test-watch": "pulp -w test",
+        "repl": "pulp repl"
+    },
+    "devDependencies": {
+        "pulp": "^12.3.0",
+        "purescript": "^0.12.0",
+        "purescript-psa": "^0.7.2"
+    }
+}
