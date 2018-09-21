@@ -13,9 +13,10 @@ import Data.Maybe (Maybe(..))
 main :: Effect Unit
 main = do
   -- log $ foldMap identity 
-  c <- getCookie "test_cookie"
+  c <- getCookie "test_cookie" -- Works!
   -- log $ encode c
-  setCookie2 "test_cookie=123123123"
+  pure $ setCookie2 "test_cookie=123123123" -- Works 
+  setCookie "test_cookie=123123123" -- Does not work, TypeError: Browser_Cookie.setCookie(...) is not a function
   cookies <- getCookies
   foldMap log cookies
     -- where

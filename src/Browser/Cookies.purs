@@ -18,6 +18,8 @@ foreign import _getCookies :: Effect String
 
 foreign import _setCookie :: String -> Effect Unit
 
+foreign import _setCookie2 :: String -> Unit
+
 getCookies :: Effect (Array String)
 getCookies = do
   cs <- _getCookies
@@ -31,9 +33,11 @@ getCookie key = findCookie <$> getCookies
     matchCookie key' [k,v]| key' == k = Just $ Cookie { key, value:v }
     matchCookie k kv = Nothing
 
-setCookie :: SetCookie -> Effect Unit
-setCookie sc = _setCookie $ encode sc
+-- setCookie :: SetCookie -> Effect Unit
+-- setCookie sc = _setCookie $ encode sc
 
+setCookie :: String -> Effect Unit
+setCookie sc = _setCookie sc
 
-setCookie2 :: String -> Effect Unit
-setCookie2 = _setCookie
+setCookie2 :: String -> Unit
+setCookie2 = _setCookie2
