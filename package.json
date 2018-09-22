@@ -2,8 +2,8 @@
     "private": true,
     "scripts": {
         "clean": "rimraf output && rimraf .pulp-cache",
-        "build": "eslint src && pulp build -- --strict && pulp build --to dist/browser-cookies.js",
-        "watch": "pulp -w build --to dist/browser-cookies.js",
+        "build": "eslint src && pulp build -- --strict",
+        "watch": "pulp -w build",
         "test": "pulp test",
         "watch-test": "pulp -w test",
         "repl": "pulp repl"
