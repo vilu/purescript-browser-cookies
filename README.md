@@ -3,8 +3,7 @@
 [![Latest release](http://img.shields.io/github/release/vilu/purescript-browser-cookies.svg)](https://github.com/vilu/purescript-browser-cookies/releases)
 [![Build status](https://travis-ci.org/vilu/purescript-browser-cookies.svg?branch=master)](https://travis-ci.org/vilu/purescript-browser-cookies)
 [![Pursuit](http://pursuit.purescript.org/packages/purescript-browser-cookies/badge)](http://pursuit.purescript.org/packages/purescript-browser-cookies/)
-[![Maintainer: garyb](https://img.shields.io/badge/maintainer-garyb-lightgrey.svg)](http://github.com/garyb)
-[![Maintainer: thomashoneyman](https://img.shields.io/badge/maintainer-thomashoneyman-lightgrey.svg)](http://github.com/thomashoneyman)
+[![Maintainer: vilu](https://img.shields.io/badge/maintainer-vilu-lightgrey.svg)](http://github.com/vilu)
 
 Get, Set and Remove cookies in the browser.
 
