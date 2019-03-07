@@ -55,12 +55,11 @@ val = PC.try (quoted rfc2625) <|> rfc2625
   where quoted = PC.between (PS.string "\"") (PS.string "\"")
         rfc2625 = SCU.fromCharArray
                   <$> Array.some (PT.alphaNum <|> special)
-        special = PC.choice
-                  (PS.char
-                   <$> ['!', '#', '$', '%', '&', '\'', '(', ')', '*'
-                       , '+', '-', '.', '/', ':', '<', '=', '>', '?'
-                       , '@', '[', ']', '^', '_', '`', '{', '|', '}'
-                       , '~']) 
+        special = PC.choice $ PS.char
+                  <$> ['!', '#', '$', '%', '&', '\'', '(', ')', '*'
+                      , '+', '-', '.', '/', ':', '<', '=', '>', '?'
+                      , '@', '[', ']', '^', '_', '`', '{', '|', '}'
+                      , '~']
                   
 
 

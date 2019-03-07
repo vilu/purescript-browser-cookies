@@ -19,13 +19,10 @@ import Test.Unit.QuickCheck (quickCheck)
 import Test.QuickCheck (Result(..))
 import Test.QuickCheck.Arbitrary (class Arbitrary)
 import Test.QuickCheck.Gen (Gen, arrayOf1, oneOf)
--- import Test.QuickCheck (quickCheck)
+
 
 
 data CookieSample = CookieSample String String
-
-newtype CookieKey = CookieKey String
-newtype CookieVal = CookieVal String
 
 instance arbitraryCookieSample :: Arbitrary CookieSample where
   arbitrary = CookieSample
@@ -43,11 +40,10 @@ instance arbitraryCookieSample :: Arbitrary CookieSample where
       valRFC2625 =
         oneOf $ genAlpha :|
         ([genAlpha, genDigitChar]
-         <> (pure
-             <$> ['!', '#', '$', '%', '&', '\'', '(', ')'
-             , '*', '+', '-', '.', '/', ':', '<', '='
-             , '>', '?', '@', '[', ']', '^', '_', '`'
-             , '{', '|', '}', '~']))
+         <> (pure <$> ['!', '#', '$', '%', '&', '\'', '(', ')'
+                      , '*', '+', '-', '.', '/', ':', '<', '='
+                      , '>', '?', '@', '[', ']', '^', '_', '`'
+                      , '{', '|', '}', '~']))
 
 main :: Effect Unit
 main = runTest do
