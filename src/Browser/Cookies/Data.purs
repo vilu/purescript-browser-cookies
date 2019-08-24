@@ -32,10 +32,10 @@ data SameSite = Lax | Strict
 derive instance eqSamesite :: Eq SameSite
 
 -- | Possible options that can be set for a cookie
--- | maxAge, expires: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#SameSite_cookies#Permanent_cookies
--- | secure, httpOnly: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#SameSite_cookies#Secure_and_HttpOnly_cookies
+-- | maxAge, expires: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Permanent_cookies
+-- | secure, httpOnly: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies
 -- | samesite: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#SameSite_cookies
--- | domain, path: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#SameSite_cookies#Scope_of_cookies
+-- | domain, path: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Scope_of_cookies
 newtype CookieOpts = CookieOpts {
     maxAge :: Maybe Number
   , expires :: Maybe JSDate
