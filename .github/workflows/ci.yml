@@ -28,9 +28,9 @@ jobs:
 
       - run: npm install
 
-      - run: npm run -s build
+      - run: npm run build
 
-      - run: npm run -s test
+      - run: npm run test
 
 #       - run: npm run -s example-all
 #       - run: npm run -s check-formatting
