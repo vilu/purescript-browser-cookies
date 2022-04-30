@@ -1,5 +1,8 @@
 -- | This module provides the API for getting, setting and removing cookies
-module Browser.Cookie (getCookies, getCookie, setCookie, removeCookie) where
+module Browser.Cookie
+  ( module Browser.Cookie
+  , module Export
+  ) where
 
 import Prelude
 import Effect (Effect)
@@ -7,6 +10,8 @@ import Data.Maybe (Maybe(..))
 import Browser.Cookies.Data (Cookie(..), SetCookie(..), CookieOpts(..), encode)
 import Data.JSDate (fromTime)
 import Browser.Cookies.Internal (bakeCookies, findCookie)
+import Browser.Cookies.Data as Export
+import Browser.Cookies.Internal (bakeCookies, findCookie) as Export
 
 foreign import _getCookies :: Effect String
 
