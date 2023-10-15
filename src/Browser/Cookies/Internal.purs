@@ -17,12 +17,12 @@ import Data.String.CodeUnits as SCU
 import Data.String.Pattern (Pattern(..))
 import Data.Foldable (class Foldable, find)
 
-import Text.Parsing.Parser (Parser, runParser)
-import Text.Parsing.Parser as Parser
-import Text.Parsing.Parser.Combinators as PC
-import Text.Parsing.Parser.String (skipSpaces)
-import Text.Parsing.Parser.String as PS
-import Text.Parsing.Parser.Token as PT
+import Parsing (Parser, runParser)
+import Parsing as Parser
+import Parsing.Combinators as PC
+import Parsing.String.Basic (skipSpaces)
+import Parsing.String as PS
+import Parsing.Token as PT
 
 
 -- * Parsing
